@@ -27,8 +27,11 @@ window.onload = function() {
       .attr({x:75, y:75, w:50, h:50})
       .color("red")
       .collision().onHit("player", function() {
-        this.destroy();
+        moveEnemy(this);
       });
+
+    // WALLS
+
     var wall_left = Crafty.e("2D, Canvas, Color, Collision, wall_left")
       .attr({x:0, y:0, w:25, h:500})
       .color("black");
@@ -41,4 +44,11 @@ window.onload = function() {
     var wall_bottom = Crafty.e("2D, Canvas, Color, Collision, wall_bottom")
         .attr({x:0, y:475, w:800, h:25})
         .color("black");
+
+    // FUNCTIONS
+
+    function moveEnemy (enemy) {
+      enemy.x = ((Math.floor(Math.random() * 15)) * 50) + 25;
+      enemy.y = ((Math.floor(Math.random() * 9)) * 50) + 25;
+    }
 };
